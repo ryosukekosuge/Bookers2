@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+<%= form_for(@book) do |f| %>
+  <h1>Editing Book</h1>
+   <div class="field row">
+    <label for="book_title">Title</label>
+    <br>
+     <%= f.text_field :title, autofocus: true, autocomplete: "title" %>
+    </br>
+   </div>
+    <div class="field row">
+    <label for="book_body">Opinion</label>
+    <br>
+    <%= f.text_field :body, autofocus: true, autocomplete: "body" %>
+   </br>
+   </div>
+   <div class="actions">
+    <button type="btn btn-primary col-xs-12 data-disable-with" >
+   <%= f.submit 'Update Book' %>
+ </button>
+   </div>
+ </div>
+<% end %>
+ <%= link_to 'Show', book_path(@book.id) %>
+ |
+ <%= link_to 'Back', books_path %>
+</div>
+</div>
+</div>
