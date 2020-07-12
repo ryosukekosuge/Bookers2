@@ -1,15 +1,4 @@
 <div class ="container">
-  <div class="text-danger">
-     <% if @book.errors.any? %>
-    <h3>
-      <%= pluralize(@book.errors.count, "error") %>
-      prohibited this obj from being saved:
-    </h3>
-        <% @book.errors.full_messages.each do |message| %>
-         <li><%= message %></li>
-       <% end %>
-       <% end %>
-     </div>
   <div class="text-success">
    <div class="flash"><%= flash[:notice] %></div>
 </div>
@@ -18,7 +7,7 @@
    <div class="col-xs-3">
     <h2>User info</h2>
      <table class="table">
-      <%= attachment_image_tag user, :profile_image , format: "jpeg" , size: "50x50" %>
+      <%= attachment_image_tag user, :profile_image ,fallback:'no_image.jpg', size: "50x50" %>
       <tr>
        <th>name</th>
        <th><%= user.name %></th>
@@ -32,14 +21,14 @@
      <%= link_to " " , edit_user_path(user),  class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_19175" %>
      </div>
   <h2>New book</h2>
-  <%= form_for (@book) do |f| %>
+  <%= form_for (book) do |f| %>
    <div class="field row">
     <%= f.label :title %><br />
     <%= f.text_field :title, autofocus: true, autocomplete: "Title" %>
    </div>
    <div class="field row">
-    <%= f.label :body %><br />
-    <%= f.text_field :body, autofocus: true, autocomplete: "Opinion" %>
+    <%= f.label :Opinion %><br />
+    <%= f.text_field :body, autofocus: true, autocomplete: "body" %>
    </div>
    <div class="actions" >
     <%= f.submit "Create Book" %>
